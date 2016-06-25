@@ -18,7 +18,7 @@
 
 #### 二、[变量](https://github.com/wy-ang/javascript/blob/master/%E5%8F%98%E9%87%8F.md)
 
-#### 三、[数据类型]()
+#### 三、[数据类型](https://github.com/wy-ang/javascript/blob/master/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md)
 
 #### 四、[操作符]()
 
