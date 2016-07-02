@@ -1,0 +1,7 @@
+*{margin: 0;padding: 0;}
+.dateWrap {width: 707px;}
+.btn{cursor: pointer;}
+.dateWrap ul{width:707px;border-top: 1px solid #ccc;border-left: 1px solid #ccc;}
+.dateWrap .weekDate ul{border-top: none;}
+.dateWrap li{display: inline-block;*display: inline;vertical-align: middle;*zoom: 1;width: 100px;height:24px;line-height:24px;text-align: center;border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;}
+.active{color: #ff3000;}
