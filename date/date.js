@@ -6,30 +6,32 @@ $(function(){
 		init();
 
 		//构建时间段
+		var weekTxt = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
 		var hourDraw = function(){
 			var hourTxt = ['06:00 - 07:00', '07:00 - 08:00', '08:00 - 09:00', '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00', '16:00 - 17:00', '17:00 - 18:00', '18:00 - 19:00', '19:00 - 20:00', '20:00 - 21:00', '21:00 - 22:00', '22:00 - 23:00', '23:00 - 24:00'],
 				hourPatText = ['上<br/>午', '下<br/>午', '晚<br/>上'],
-				h = 0,
-				s = 0,
-				hourEm = '<ul>';
-				for (; h < hourTxt.length; h++) {
+				a = ['1','2','3','4','5','6','7'],
+				h,
+				s,
+				hourEm = '';
+				for (h in hourTxt) {
 					if(h % 6 == 0){
-						console.log(hourPatText[h/6]);
+						hourEm += '<ul><li><span class="hourpat0'+h/6+'">'+hourPatText[h/6]+'</span>';
+					}else{
+						hourEm += '<ul><li>';
 					}
-					hourEm += '<li class="data-hour-'+(parseInt(h) + 1)+'" data-day='+(parseInt(h) + 1)+'><span>'+hourTxt[h]+'</span></li>';
+					hourEm += '<span>'+hourTxt[h]+'</span>';
+					for(s in weekTxt){
+						hourEm += '<span id="week-'+ s +'-hour-'+ h +'"></span>';
+					}
+					hourEm += '</li></ul>';
 				};
-				hourEm += '</ul>';
 				$('.hourDate').html(hourEm);
-				for(; s < 7; s++){
-					console.log($('.data-hour-'+(parseInt(h) + 1)));
-					$('.data-hour-'+(parseInt(h) + 1)).append("<span></span>");
-				}
 		}
 
 		//构建周
 		var weekDraw = function(){
-			var weekTxt = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-				w = 0,
+			var w = 0,
 				weekEm = '<ul>';
 			for (; w < weekTxt.length; w++) {
 				weekEm += '<li class="data-day-'+(parseInt(w) + 1)+'" data-day='+(parseInt(w) + 1)+'>'+weekTxt[w]+'</li>';
