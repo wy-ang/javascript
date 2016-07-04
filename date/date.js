@@ -4,35 +4,57 @@ $(function(){
 			initDate = new Date();
 		}
 		init();
+
+		//构建时间段
+		var hourDraw = function(){
+			var hourTxt = ['06:00 - 07:00', '07:00 - 08:00', '08:00 - 09:00', '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00', '16:00 - 17:00', '17:00 - 18:00', '18:00 - 19:00', '19:00 - 20:00', '20:00 - 21:00', '21:00 - 22:00', '22:00 - 23:00', '23:00 - 24:00'],
+				hourPatText = ['上<br/>午', '下<br/>午', '晚<br/>上'],
+				h = 0,
+				s = 0,
+				hourEm = '<ul>';
+				for (; h < hourTxt.length; h++) {
+					if(h % 6 == 0){
+						console.log(hourPatText[h/6]);
+					}
+					hourEm += '<li class="data-hour-'+(parseInt(h) + 1)+'" data-day='+(parseInt(h) + 1)+'><span>'+hourTxt[h]+'</span></li>';
+				};
+				hourEm += '</ul>';
+				$('.hourDate').html(hourEm);
+				for(; s < 7; s++){
+					console.log($('.data-hour-'+(parseInt(h) + 1)));
+					$('.data-hour-'+(parseInt(h) + 1)).append("<span></span>");
+				}
+		}
+
 		//构建周
-		var weekDay = function(){
-			var weekTxt = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
-			var w = 0;
-			var weekEm = '<ul>'
+		var weekDraw = function(){
+			var weekTxt = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+				w = 0,
+				weekEm = '<ul>';
 			for (; w < weekTxt.length; w++) {
-				weekEm += '<li class="data-day-'+(parseInt(w) + 1)+'" data-day='+(parseInt(w) + 1)+'>'+weekTxt[w]+'</li>'
-			}
+				weekEm += '<li class="data-day-'+(parseInt(w) + 1)+'" data-day='+(parseInt(w) + 1)+'>'+weekTxt[w]+'</li>';
+			};
 			weekEm += '</ul>';
 			$('.weekDate').html(weekEm);
 		}
 
 		//构建日期
-		var initDraw = function(){
-			var i = 0;
-			var dateEm = '<ul>';
+		var dateDraw = function(){
+			var i = 0,
+				dateEm = '<ul>';
 			for(;i<7;i++){
 				dateEm += '<li class="data-week-'+(parseInt(i) + 1)+'"></li>';
-			}
+			};
 			dateEm += '</ul>';
 			$('.motDate').html(dateEm);
 		}
 		
 		//填充日期
-		var drawDate = function(){
+		var fillDate = function(){
 			var curDay = initDate.getDay();
 			if(curDay == 0){
 				curDay = 7;
-			}
+			};
 			initDate.setDate(initDate.getDate() - curDay + 1);
 			
 			var myDate = new Date(initDate),
@@ -53,16 +75,17 @@ $(function(){
 				if(myDate.getFullYear()==dateNow.getFullYear()&&myDate.getMonth()==dateNow.getMonth()&&myDate.getDate()==dateNow.getDate()){
 					$thisDay.html('今天').addClass('active');
 					$thisWeek.addClass('active');
-				}
+				};
 				myDate.setDate(myDate.getDate() + 1);
-			}
+			};
 		}
 		
 		//加载日期
 		var reload = function(){
-			initDraw();
-			weekDay();
-			drawDate();
+			dateDraw();
+			weekDraw();
+			hourDraw();
+			fillDate();
 		}
 		reload();
 		

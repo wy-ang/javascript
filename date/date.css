@@ -1,7 +1,10 @@
 *{margin: 0;padding: 0;}
-.dateWrap {width: 707px;}
+.hourBox,.dateBox,.dateWrap li{display: inline-block;*display: inline;vertical-align: top;*zoom: 1;}
+.dateWrap {width: 900px;font-size: 0;}
 .btn{cursor: pointer;}
-.dateWrap ul{width:707px;border-top: 1px solid #ccc;border-left: 1px solid #ccc;}
+.dateWrap ul{border-top: 1px solid #ccc;border-left: 1px solid #ccc;}
 .dateWrap .weekDate ul{border-top: none;}
-.dateWrap li{display: inline-block;*display: inline;vertical-align: middle;*zoom: 1;width: 100px;height:24px;line-height:24px;text-align: center;border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;}
+.dateWrap li{width: 100px;height:24px;line-height:24px;text-align: center;border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;font-size: 15px;font-family: 'Microsoft YaHei'}
+.dateWrap .hourPat li{width: 20px;height: 50px;display: block;}
+.dateWrap .hourDate li{width: 109px;height: 24px;display: block;}
 .active{color: #ff3000;}
